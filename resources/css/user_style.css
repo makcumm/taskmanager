@@ -1,0 +1,28 @@
+#dialog-form label {
+	display: block;
+	margin-bottom: 5px;
+	color: #FFF;
+}
+
+.task_made {
+	text-decoration: line-through;
+}
+
+.calendar {
+	font-family: Arial; font-size: 12px;
+}
+table.calendar {
+	border-collapse: collapse; margin: 30px 0;
+}
+.calendar .days td {
+	width: 80px; height: 80px; padding: 4px;
+	border: 1px solid #999;
+	vertical-align: top;
+	background-color: #DEF;
+}
+.calendar .days td:hover {
+	background-color: #FFF;
+}
+.calendar .highlight {
+	font-weight: bold; color: #00F;
+}
