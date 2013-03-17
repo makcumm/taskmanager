@@ -4,7 +4,7 @@
 	color: #FFF;
 }
 
-.task_made {
+tr.task_made {
 	text-decoration: line-through;
 }
 

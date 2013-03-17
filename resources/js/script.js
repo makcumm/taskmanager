@@ -73,7 +73,7 @@ function task_made( task_id )
 		data:  { 'task_id':  task_id, 'status': "yes",  'ajax': 1},
 		dataType: "json",
 		success: function(response) {
-			$('td[task_name*="'+task_id+'"]').addClass( "task_made" );
+			$('td[task_name*="'+task_id+'"]').parent().addClass("task_made");
 		}
 	} );
 }
