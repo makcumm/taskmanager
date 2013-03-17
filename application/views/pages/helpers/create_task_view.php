@@ -1,9 +1,5 @@
 <?php
 /**
- * Created by JetBrains PhpStorm.
- * User: Максим
- * Date: 03.06.12
- * Time: 10:01
  * To change this template use File | Settings | File Templates.
  */
 // TODO: чтобы выводить добавленые задачи, в контроллере дописать в JSON данные из БД новой задачи, отрисовать их во viewe

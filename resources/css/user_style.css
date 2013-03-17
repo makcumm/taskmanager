@@ -28,9 +28,15 @@ table.calendar {
 }
 
 .pull-right {
-	margin-top: -28px;
+	margin-top: -40px;
 }
 .page-header h1 {
 	padding-top: 30px;
 	width: 60%;
+}
+h1 {
+	font-size: 28px;
+}
+h2 {
+	font-size: 24px;
 }

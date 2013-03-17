@@ -1,10 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
-* Created by JetBrains PhpStorm.
- * User: Максим
- * Date: 28.05.12
- * Time: 21:36
  * To change this template use File | Settings | File Templates.
 */
 class main extends MY_Controller {
@@ -19,7 +15,7 @@ class main extends MY_Controller {
 		parent::__construct();
 		$this->load->model('main_m');//load my MODEL main_m
 	}
-	
+
 	public function index()
 	{
 		if ( $this->is_logged_in() === FALSE )
