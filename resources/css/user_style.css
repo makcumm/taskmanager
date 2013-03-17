@@ -4,7 +4,7 @@
 	color: #FFF;
 }
 
-.task_made {
+tr.task_made {
 	text-decoration: line-through;
 }
 
@@ -25,4 +25,12 @@ table.calendar {
 }
 .calendar .highlight {
 	font-weight: bold; color: #00F;
+}
+
+.pull-right {
+	margin-top: -28px;
+}
+.page-header h1 {
+	padding-top: 30px;
+	width: 60%;
 }

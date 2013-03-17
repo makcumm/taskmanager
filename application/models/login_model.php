@@ -1,15 +1,11 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
  * Created by JetBrains PhpStorm.
- * User: Максим
- * Date: 28.05.12
- * Time: 23:04
  * To change this template use File | Settings | File Templates.
  */
 class Login_model extends CI_Model {
 
-	function getUser( $user_logn = NULL, $user_password = NULL )
-	{
+	function getUser( $user_logn = NULL, $user_password = NULL ) {
 		$table = 'worker';
 
 		$query = $this->db->select( 'worker_email, worker_password' ) ->

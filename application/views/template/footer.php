@@ -1,6 +1,6 @@
 <footer id="footer" class="container">
 	<div class="row">
-		<div class="span6">&copy Melnic Maxim</div>
+		<div class="span6">&copy Alexei Goja</div>
 <!--		<div class="span6">HI</div>-->
 	</div>
 	<!-- Le javascript
