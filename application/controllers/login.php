@@ -1,9 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
  * Created by JetBrains PhpStorm.
- * User: Максим
- * Date: 28.05.12
- * Time: 21:36
  * To change this template use File | Settings | File Templates.
  */
 class Login extends MY_Controller {
@@ -11,14 +8,16 @@ class Login extends MY_Controller {
 	function __construct()
 	{
 		parent::__construct();
+		//debug
 		$this->output->enable_profiler(TRUE);
 
-		$this->load->model( 'login_model' );
+		//load model
+		$this->load->model('login_model');
 	}
 
 	function index()
 	{
-		$this->_render( 'pages/login_view' );
+		$this->_render('pages/login_view');
 	}
 
 	function sign_in()
@@ -26,7 +25,7 @@ class Login extends MY_Controller {
 		$error = FALSE;
 		$success = FALSE;
 
-		if ( $this->input->post( 'submit' ) )
+		if ($this->input->post('submit'))
 		{
 			$validation_rules = array(
 				array(
@@ -36,14 +35,14 @@ class Login extends MY_Controller {
 				),
 				array(
 					'field' => 'password',
-					'label' => 'Пароль',
+					'label' => 'Password',
 					'rules' => 'trim|required'
 				)
 			);
 
-			$this->form_validation->set_rules( $validation_rules );
+			$this->form_validation->set_rules($validation_rules);
 
-			if ( $this->form_validation->run() )
+			if ($this->form_validation->run())
 			{
 				$email = $this->input->post( 'email' );
 				$password = $this->input->post( 'password' );
