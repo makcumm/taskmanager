@@ -11,11 +11,12 @@
 <title><?php echo $title ?></title>
 <title><?php echo $description ?></title>
 
-<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="keywords" content="<?php echo $keywords ?>" />
 <meta name="author" content="<?php echo $author ?>" />
 
 <link rel="stylesheet" href="<?php echo base_url(CSS."bootstrap.css");?>">
+<link rel="stylesheet" href="<?php echo base_url(CSS."bootstrap-responsive.css");?>">
 <link rel="stylesheet" href="<?php echo base_url(CSS."global.css");?>">
 <link rel="stylesheet" href="<?php echo base_url(CSS."user_style.css");?>">
 
