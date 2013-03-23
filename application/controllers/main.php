@@ -20,7 +20,7 @@ class main extends MY_Controller {
 	{
 		if ( $this->is_logged_in() === FALSE )
 		{
-			$this->data['error'] = "У вас нет прав для просмотра данной страницы." . anchor('login/', 'Войдите!');
+			$this->data['error'] = "You haven't access permissions." . anchor('login/', 'Log in please!');
 
 			$this->_render( 'pages/helpers/strickt_access' );
 		}
@@ -57,37 +57,37 @@ class main extends MY_Controller {
 			$validation_rules = array(
 				array(
 					'field' => 'structure',
-					'label' => 'Структура',
+					'label' => 'Structure',
 					'rules' => 'required|numeric'
 				),
 				array(
 					'field' => 'division',
-					'label' => 'Подразделение',
+					'label' => 'Division',
 					'rules' => 'required|numeric'
 				),
 				array(
 					'field' => 'importance',
-					'label' => 'Приоритет',
+					'label' => 'Priority',
 					'rules' => 'trim'
 				),
 				array(
 					'field' => 'worker',
-					'label' => 'Ответственный',
+					'label' => 'Responsible',
 					'rules' => 'required|numeric'
 				),
 				array(
 					'field' => 'task_name',
-					'label' => 'Название задачи',
+					'label' => 'Task Name',
 					'rules' => 'required|trim|xss_clean'
 				),
 				array(
 					'field' => 'task_description',
-					'label' => 'Описание задачи',
+					'label' => 'Description',
 					'rules' => ''
 				),
 				array(
 					'field' => 'task_deadline',
-					'label' => 'Дата окончания',
+					'label' => 'End date',
 					'rules' => ''
 				)
 			);
@@ -102,7 +102,7 @@ class main extends MY_Controller {
 
 				$message = array(
 					'status' => "ok",
-					'message' => "Задача добавлена"
+					'message' => "Congratulation! New task added."
 				);
 			}
 			else
@@ -165,37 +165,37 @@ class main extends MY_Controller {
 			$valid_rules = array(
 				array(
 					'field' => 'structure',
-					'label' => 'Структура',
+					'label' => 'Structure',
 					'rules' => 'required|numeric'
 				),
 				array(
 					'field' => 'division',
-					'label' => 'Подразделение',
+					'label' => 'Division',
 					'rules' => 'required|numeric'
 				),
 				array(
 					'field' => 'importance',
-					'label' => 'Приоритет',
+					'label' => 'Priority',
 					'rules' => 'trim'
 				),
 				array(
 					'field' => 'worker',
-					'label' => 'Ответственный',
+					'label' => 'Responsible',
 					'rules' => 'required|numeric'
 				),
 				array(
 					'field' => 'task_name',
-					'label' => 'Название задачи',
+					'label' => 'Task Name',
 					'rules' => 'required|trim|xss_clean'
 				),
 				array(
 					'field' => 'task_description',
-					'label' => 'Описание задачи',
+					'label' => 'Description',
 					'rules' => ''
 				),
 				array(
 					'field' => 'task_deadline',
-					'label' => 'Дата окончания',
+					'label' => 'End date',
 					'rules' => ''
 				)
 			);
@@ -210,7 +210,7 @@ class main extends MY_Controller {
 
 				$message = array(
 					'status' => "ok",
-					'message' => "Задача иземнена"
+					'message' => "Task updated."
 				);
 //				redirect( 'main' );
 			}
