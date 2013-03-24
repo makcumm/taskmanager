@@ -1,9 +1,5 @@
 <?php
 /**
- * Created by JetBrains PhpStorm.
- * User: Максим
- * Date: 03.06.12
- * Time: 10:03
  * To change this template use File | Settings | File Templates.
  */
 ?>
@@ -48,7 +44,13 @@
 
 						}
 						?>
-					<tr>
+
+						<?php if ( $task_value['task_made'] == "yes" ) : ?>
+							<tr class="task_made">
+						<?php else : ?>
+							<tr>
+						<?php endif; ?>
+
 						<td class="structure" style="width: 70px;">
 							<?=$task_value['structure_name']?>
 						</td>
@@ -65,15 +67,9 @@
 							<?=$task_value['worker_name'] . " " . $task_value['worker_sure_name']?>
 						</td>
 
-						<?php if ( $task_value['task_made'] == "yes" ) : ?>
-							<td class="task_made" task_name="<?php echo $task_value['task_id']; ?>" style="width: 150px;">
-									<?=$task_value['task_name']?>
-							</td>
-						<?php else : ?>
 							<td class="task_name" task_name="<?php echo $task_value['task_id']; ?>" style="width: 150px;">
 								<?=$task_value['task_name']?>
 							</td>
-						<?php endif; ?>
 
 						<td class="task_description" style="width: 200px;" task_description="<?php echo $task_value['task_id']; ?>">
 							<?=$task_value['task_description']?>
