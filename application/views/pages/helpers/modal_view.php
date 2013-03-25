@@ -1,10 +1,3 @@
-<?php
-/**
- * To change this template use File | Settings | File Templates.
- */
-// TODO: чтобы выводить добавленые задачи, в контроллере дописать в JSON данные из БД новой задачи, отрисовать их во viewe
-?>
-
 <div id="example" class="modal hide fade in" tabindex="-1" role="dialog" aria-hidden="true">
 
 	<div class="modal-header">
@@ -73,7 +66,6 @@
 		</div>
 
 	</div>
-
 
 	<div class="modal-footer">
 		<a href="#" class="btn btn-success">Submit</a>

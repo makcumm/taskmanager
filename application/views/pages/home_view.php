@@ -9,7 +9,7 @@
 	<section>
 		<div class="page-header">
 			<h1>Менеджер задач для предприятия</h1>
-			<button type="button" id="create-user" class="btn" data-toggle="modal" href="#example" />New task</button>
+			<button type="button" id="create-user" class="btn" data-toggle="" href="#example" />New task</button>
 		</div>
 	</section>
 
