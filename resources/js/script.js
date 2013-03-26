@@ -50,17 +50,14 @@ $(document).ready( function() {
 			$.ajax({
 				url: '/modal/open_modal_window',
 				type: 'POST',
-				data: ['open_window'],
+				data: {type: 'open_window'},
 				dataType: 'html',
 				success: function(response) {
-					$("div.page-header").load('/modal/open_modal_window', function() {
-						console.log("It work!");
-						$(this).modal({
+					$('<div class="modal hide fade">' + response + '</div>').modal({
 							backdrop: true,
 							keyboard: true,
 						});
-					}).modal('show');
-				}
+					}
 			});
 		});
 

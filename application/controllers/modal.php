@@ -6,13 +6,19 @@ class Modal extends MY_Controller {
 	{
 		parent::__construct();
 		$this->load->model('modal_model');
+		$this->load->model('main_m');
 	}
 
 	public function open_modal_window()
 	{
-		if ( $this->input->post('open_window') )
+		if ( $this->input->post('type') === "open_window" )
 		{
-			echo $this->load->view( 'pages/helpers/modal_view' );
+
+			$this->data['structure'] = $this->main_m->get_data('structure');
+			$this->data['division'] = $this->main_m->get_data('division');
+			$this->data['worker']	= $this->main_m->get_data('worker');
+
+			echo $this->load->view( 'pages/helpers/modal_view', $this->data, TRUE );
 			exit();
 		}
 	}
