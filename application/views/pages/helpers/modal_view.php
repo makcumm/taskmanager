@@ -66,6 +66,6 @@
 </div>
 
 <div class="modal-footer">
-	<a href="#" class="btn btn-success">Submit</a>
+	<a href="#" class="btn btn-success" id="add_edit_task">Save</a>
 	<a href="#" class="btn" data-dismiss="modal">Close</a>
 </div>
