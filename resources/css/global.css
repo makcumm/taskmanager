@@ -12,3 +12,9 @@ body{
   padding: 35px 0 36px;
   border-top: 1px solid #e5e5e5;
 }
+
+/* Add task buttom position*/
+button.btn, input.btn[type="submit"] {
+    float: right;
+    margin-top: -40px;
+}

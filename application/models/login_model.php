@@ -1,6 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
- * Created by JetBrains PhpStorm.
  * To change this template use File | Settings | File Templates.
  */
 class Login_model extends CI_Model {
