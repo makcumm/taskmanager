@@ -4,6 +4,7 @@
 </div>
 
 <div class="modal-body">
+	<?php echo form_open(); ?>
 	<div class="control-group">
 		<?php echo form_label('Structure', 'structure'); ?>
 		<div class="controls">
@@ -36,7 +37,16 @@
 	<div class="control-group">
 		<?php echo form_label('Task Name', 'task_name'); ?>
 		<div class="controls">
-			<?php echo form_input('task_name', "", 'id=task_name' ); ?>
+			<?php
+				$form_input_conf = array(
+					'name' => 'task_name',
+					'placeholder' => 'Task name',
+					'id' => 'task_name',
+					'value' => ''
+
+				);
+			?>
+			<?php echo form_input($form_input_conf); ?>
 		</div>
 	</div>
 
@@ -48,7 +58,6 @@
 			'id' => 'task_description'
 		);
 	?>
-
 	<div class="control-group">
 		<?php echo form_label('Description', 'task_description'); ?>
 		<div class="controls">
@@ -66,6 +75,6 @@
 </div>
 
 <div class="modal-footer">
-	<a href="#" class="btn btn-success" id="add_edit_task">Save</a>
+	<button type="submit" href="#" class="btn btn-success" id="add_edit_task">Save</button>
 	<a href="#" class="btn" data-dismiss="modal">Close</a>
 </div>
