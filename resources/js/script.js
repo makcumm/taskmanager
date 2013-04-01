@@ -61,7 +61,7 @@ $(document).ready( function() {
 			});
 		});
 
-		$( ".btn-success").click( function () {
+		$(document).on( "click", "#add_edit_task", function () {
 			var task_data = {
 				structure: $( "#structure").val(),
 				division: $( "#division").val(),
@@ -73,8 +73,10 @@ $(document).ready( function() {
 				ajax: '1'
 			};
 
+			console.log(task_data);
+
 			$.ajax( {
-				url: '/modal/add_task',
+				url: '/task_action/add_task',
 				type: 'POST',
 				data: task_data,
 				dataType: "json",
@@ -82,11 +84,11 @@ $(document).ready( function() {
 					if ( response.status == "ok" )
 					{
 						$("#msg").removeAttr('style').html( '<button class="close" data-dismiss="alert">x</button>' + response.message );
-						$( "#dialog-form").dialog( "close" );
 						window.location.href="<?php site_url( 'main' )?>";
 					}
-					else
+					else if (response.status == "error")
 					{
+						console.log(response);
 						$( response.structure ).insertAfter( "#structure" );
 						$( response.division ).insertAfter( "#division" );
 						$( response.importance ).insertAfter( "#importance" );
