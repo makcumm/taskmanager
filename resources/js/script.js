@@ -50,7 +50,7 @@ $(document).ready( function() {
 			$.ajax({
 				url: '/modal/open_modal_window',
 				type: 'POST',
-				data: {type: 'open_window'},
+				data: {type: 'add_task'},
 				dataType: 'html',
 				success: function(response) {
 					$('<div class="modal hide fade">' + response + '</div>').modal({

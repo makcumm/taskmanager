@@ -1,10 +1,13 @@
 <div class="modal-header">
 	<a class="close" data-dismiss="modal">×</a>
-	<h3>Add new task</h3>
+	<h3><?php echo $modal_title; ?></h3>
 </div>
 
 <div class="modal-body">
-	<?php echo form_open(); ?>
+	<?php
+		$form_open_attrs = array('class' => 'form-horizontal', );
+		echo form_open($form_action, $form_open_attrs);
+	?>
 	<div class="control-group">
 		<?php echo form_label('Structure', 'structure'); ?>
 		<div class="controls">
@@ -72,9 +75,10 @@
 		</div>
 	</div>
 
+	<?php echo form_submit(array('class' => 'btn btn-success pull-left'), 'save'); ?>
+	<!-- <button type="submit" href="#" class="btn btn-success" id="add_edit_task">Save</button> -->
+	<a href="#" class="btn" data-dismiss="modal">Close</a>
 </div>
 
 <div class="modal-footer">
-	<button type="submit" href="#" class="btn btn-success" id="add_edit_task">Save</button>
-	<a href="#" class="btn" data-dismiss="modal">Close</a>
 </div>

@@ -11,9 +11,10 @@ class Modal extends MY_Controller {
 
 	public function open_modal_window()
 	{
-		if ( $this->input->post('type') === "open_window" )
+		if ( $this->input->post('type') === "add_task" )
 		{
-
+			$this->data['modal_title'] = 'Add new task';
+			$this->data['form_action'] = 'task_action/add_task';
 			$this->data['structure'] = $this->main_m->get_data('structure');
 			$this->data['division'] = $this->main_m->get_data('division');
 			$this->data['worker']	= $this->main_m->get_data('worker');
