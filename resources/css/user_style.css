@@ -40,3 +40,8 @@ h1 {
 h2 {
 	font-size: 24px;
 }
+
+.modal-submit {
+	margin: 0 !important;
+	float: none !important;
+}
