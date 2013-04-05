@@ -35,12 +35,15 @@ class MY_Controller extends CI_Controller{
 			'jquery' => 'bootstrap/jquery.js',
 			'jquery_ui' => 'libs/jquery_ui.js',
 			'my_scripts' => 'script.js',
-			'load_img'		=> 'libs/load-image.js'
+			'load_img'		=> 'libs/load-image.js',
+			'validity'  => 'libs/validity.js',
+			'validation_script' => 'validation_script.js'
 		);
 		$this->css = array(
 			'jquery_ui' => 'vader/jquery-ui-1.8.20.custom.css',
 			'image_gallery' => 'bootstrap-image-gallery.css',
-			'user_styles' => 'user_style.css'
+			'user_styles' => 'user_style.css',
+			'validity'  => 'validity.css'
 		);
 	}
 
