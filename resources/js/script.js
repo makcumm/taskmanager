@@ -56,7 +56,7 @@ $(document).ready( function() {
 					$('<div class="modal hide fade">' + response + '</div>').modal({
 							backdrop: true,
 							keyboard: true,
-						});
+						}).css({'width':'700'});
 					}
 			});
 		});
