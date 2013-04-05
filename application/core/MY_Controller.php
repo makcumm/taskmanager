@@ -39,7 +39,8 @@ class MY_Controller extends CI_Controller{
 		);
 		$this->css = array(
 			'jquery_ui' => 'vader/jquery-ui-1.8.20.custom.css',
-			'image_gallery' => 'bootstrap-image-gallery.css'
+			'image_gallery' => 'bootstrap-image-gallery.css',
+			'user_styles' => 'user_style.css'
 		);
 	}
 
