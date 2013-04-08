@@ -1,20 +1,3 @@
-function task_edit( task_id )
-{
-	$(document).ready( function() {
-		$('#create-user').click(function() {
-			$.ajax({
-				url : 'modal/add_task',
-				type: 'POST',
-				data: task_data,
-				dataType: 'html',
-				success: function(response) {
-					console.log('Ok');
-				}
-			});
-		});
-	} );
-}
-
 function task_made( task_id )
 {
 	$.ajax( {
@@ -46,6 +29,7 @@ $(document).ready( function() {
 			task_deadline = $( "#task_deadline" )
 		allFields = $( [] ).add( task_description ).add( task_name).add( task_deadline );
 
+        /*Open modal window*/
 		$("#create-user").click(function() {
 			$.ajax({
 				url: '/modal/open_modal_window',
@@ -61,6 +45,7 @@ $(document).ready( function() {
 			});
 		});
 
+        /*AJAX request for add task*/
 		$(document).on( "click", "#add_edit_task", function () {
             var task_data = {
                 structure: $( "#structure").val(),
@@ -81,7 +66,7 @@ $(document).ready( function() {
 				success: function( response ) {
 					if ( response.status == "ok" )
 					{
-						$("#msg").removeAttr('style').html( '<button class="close" data-dismiss="alert">x</button>' + response.message );
+						$("#msg-success").removeAttr('style').html( '<button class="close" data-dismiss="alert">x</button>' + response.message );
                         $( "div.modal").modal("hide").remove();
 					}
 					else if (response.status == "error")
@@ -99,4 +84,36 @@ $(document).ready( function() {
 
 			return false;
 		} );
+
+        $("tbody.list").on(
+            "click",
+            "[class*=icon-remove]",
+            function()
+            {
+                $row_object = $( this );
+                $ajax_data =
+                    {
+                        ajax: 1,
+                        task_id: $( this ).attr( "task_id" )
+                    };
+                $.ajax({
+                    url: 'task_action/task_remove',
+                    type: "POST",
+                    data: $ajax_data,
+                    dataType: "json",
+                    success: function( response )
+                    {
+                        if ( response.status == "ok" )
+                        {
+                            $row_object.parents("tr").fadeIn( 3000 ).remove();
+                            $("#msg-success").removeAttr('style').html( '<button class="close" data-dismiss="alert">x</button>' + "Task deleted successfully");
+                        }
+                        else
+                        {
+                            $("#msg-error").removeAttr('style').html( '<button class="close" data-dismiss="alert">x</button>' + "Task wasn't delete" );
+                        }
+                    }
+                });
+            }
+        );
 	} );

@@ -22,9 +22,11 @@ class Task_action_model extends CI_Model {
 		$this->db->insert( 'task', $data );
 	}
 
-	public function task_remove( $id )
+	public function task_remove()
 	{
-		if ( $this->db->delete( 'task', array( 'task_id' => $id ) ) )
+		$task_id = $this->input->post( 'task_id' );
+
+		if ( $this->db->delete( 'task', array( 'task_id' => $task_id ) ) )
 		{
 			return TRUE;
 		}
