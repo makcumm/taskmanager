@@ -3,7 +3,7 @@
 /**
  * To change this template use File | Settings | File Templates.
 */
-class main extends MY_Controller {
+class Main extends MY_Controller {
 
 	private $error = FALSE;
 	private $success = FALSE;
