@@ -82,6 +82,7 @@ $(document).ready( function() {
 					if ( response.status == "ok" )
 					{
 						$("#msg").removeAttr('style').html( '<button class="close" data-dismiss="alert">x</button>' + response.message );
+                        $( "div.modal").modal("hide").remove();
 					}
 					else if (response.status == "error")
 					{
