@@ -36,7 +36,8 @@ class MY_Controller extends CI_Controller{
 			'jquery_ui' => 'libs/jquery_ui.js',
 			'my_scripts' => 'script.js',
 			'load_img'		=> 'libs/load-image.js',
-			'validity'  => 'libs/validity.js'
+			'validity'  => 'libs/validity.js',
+			'validation_script' => 'validation_script.js'
 		);
 		$this->css = array(
 			'jquery_ui' => 'vader/jquery-ui-1.8.20.custom.css',
