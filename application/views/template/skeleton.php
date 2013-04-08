@@ -18,7 +18,6 @@
 <link rel="stylesheet" href="<?php echo base_url(CSS."bootstrap.css");?>">
 <link rel="stylesheet" href="<?php echo base_url(CSS."bootstrap-responsive.css");?>">
 <link rel="stylesheet" href="<?php echo base_url(CSS."global.css");?>">
-<link rel="stylesheet" href="<?php echo base_url(CSS."user_style.css");?>">
 
 <!-- extra CSS-->
 <?php foreach($css as $c):?>
