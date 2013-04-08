@@ -9,6 +9,7 @@ class Task_action extends CI_Controller {
 
 	function add_task()
 	{
+//		var_dump($this->input->post()); exit();
 		if ( $this->input->post( 'ajax' ) )
 		{
 			$validation_rules = array(

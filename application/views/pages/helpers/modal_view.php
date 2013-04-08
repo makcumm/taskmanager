@@ -50,9 +50,7 @@
 							$form_input_conf = array(
 								'name' => 'task_name',
 								'placeholder' => 'Task name',
-								'id' => 'task_name',
-								'value' => ''
-
+								'id' => 'task_name'
 							);
 							echo form_input($form_input_conf);
 						?>
@@ -87,6 +85,12 @@
 </div>
 
 <div class="modal-footer">
-	<?php echo form_submit(array('class' => 'btn btn-success modal-submit span3'), 'save'); ?>
+	<?php
+		$form_submit_conf = array(
+			'class' => 'btn btn-success modal-submit span3',
+			'id'    => 'add_edit_task'
+		);
+		echo form_submit($form_submit_conf, 'save');
+	?>
 	<a href="#" class="btn" data-dismiss="modal">Close</a>
 </div>

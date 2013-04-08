@@ -55,25 +55,23 @@ $(document).ready( function() {
 				success: function(response) {
 					$('<div class="modal hide fade">' + response + '</div>').modal({
 							backdrop: true,
-							keyboard: true,
+							keyboard: true
 						}).css({'width':'600'});
 					}
 			});
 		});
 
 		$(document).on( "click", "#add_edit_task", function () {
-			var task_data = {
-				structure: $( "#structure").val(),
-				division: $( "#division").val(),
-				importance: $( "#importance").val(),
-				worker: $( "#worker").val(),
-				task_name: $( "#task_name").val(),
-				task_description: $( "#task_description").val(),
-				task_deadline: $( "#task_deadline").val(),
-				ajax: '1'
-			};
-
-			console.log(task_data);
+            var task_data = {
+                structure: $( "#structure").val(),
+                division: $( "#division").val(),
+                importance: $( "#importance").val(),
+                worker: $( "#worker").val(),
+                task_name: $( "#task_name").val(),
+                task_description: $( "#task_description").val(),
+                task_deadline: $( "#task_deadline").val(),
+                ajax: '1'
+            };
 
 			$.ajax( {
 				url: '/task_action/add_task',
@@ -88,7 +86,6 @@ $(document).ready( function() {
 					}
 					else if (response.status == "error")
 					{
-						console.log(response);
 						$( response.structure ).insertAfter( "#structure" );
 						$( response.division ).insertAfter( "#division" );
 						$( response.importance ).insertAfter( "#importance" );

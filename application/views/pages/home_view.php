@@ -14,7 +14,4 @@
 	</section>
 
 	<?php echo $this->load->view('pages/helpers/see_tasks_view'); ?>
-	<?php echo $this->load->view('pages/helpers/create_task_view'); ?>
-	<?php echo $this->load->view('pages/helpers/edit_task_view'); ?>
-
 <div>
