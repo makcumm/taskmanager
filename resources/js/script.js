@@ -82,7 +82,6 @@ $(document).ready( function() {
 					if ( response.status == "ok" )
 					{
 						$("#msg").removeAttr('style').html( '<button class="close" data-dismiss="alert">x</button>' + response.message );
-						window.location.href="<?php site_url( 'main' )?>";
 					}
 					else if (response.status == "error")
 					{
