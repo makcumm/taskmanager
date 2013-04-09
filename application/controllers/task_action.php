@@ -36,10 +36,7 @@ class Task_action extends CI_Controller {
 	{
 		if ( $this->input->post( 'ajax' ) )
 		{
-			$task_id = $this->input->post( 'task_id' );
-			$status = $this->input->post( 'status' );
-
-			if ( $this->main_m->task_made( $task_id, $status ) )
+			if ($this->task_action_model->task_made())
 			{
 				echo json_encode( array( 'status' => 'ok' ) );
 			}

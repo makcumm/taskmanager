@@ -36,9 +36,11 @@ class Task_action_model extends CI_Model {
 		}
 	}
 
-	public function task_made( $id, $status )
+	public function task_made()
 	{
-		$query = $this->db->where( 'task_id', $id )->update( 'task', array( 'task_made' => $status ) );
+		$task_id = $this->input->post( 'task_id' );
+
+		$query = $this->db->where( 'task_id', $task_id )->update( 'task', array( 'task_made' => 'yes' ) );
 		if ( $query )
 		{
 			return TRUE;

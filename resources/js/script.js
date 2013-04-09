@@ -1,28 +1,3 @@
-function task_made( task_id )
-{
-	$.ajax( {
-		url: "main/task_made",
-		type: 'POST',
-		data:  { 'task_id':  task_id, 'status': "yes",  'ajax': 1},
-		dataType: "json",
-		success: function(response) {
-			$('td[task_name*="'+task_id+'"]').parent().addClass("task_made");
-		}
-	} );
-}
-
-function task_remove( task_id ) {
-	$.ajax( {
-		url: "main/task_remove",
-		type: 'POST',
-		data:  { 'task_id':  task_id,  'ajax': 1},
-		dataType: "json",
-		success: function(response) {
-			$('li[task_id*="'+task_id+'"]').parents('tr').remove();
-		}
-	} );
-}
-
 $(document).ready( function() {
 		var task_description = $( "#task_description" ),
 			task_name = $( "#task_name" ),
@@ -115,5 +90,42 @@ $(document).ready( function() {
                     }
                 });
             }
+        );
+
+        // set reaction on made buttom
+        $("tbody.list").on(
+          "click",
+          "[class*=icon-ok]",
+          function()
+          {
+            $row_object = $( this );
+            $ajax_data =
+              {
+                ajax: 1,
+                task_id: $( this ).attr( "task_id" )
+              };
+
+              // get parent <tr> for click icon
+              var parent = $(this).parent().parent().parent();
+
+              $.ajax({
+                    url: 'task_action/task_made',
+                    type: "POST",
+                    data: $ajax_data,
+                    dataType: "json",
+                    success: function( response )
+                    {
+                        if ( response.status == "ok" )
+                        {
+                          parent.addClass('task_made');
+                          $("#msg-success").removeAttr('style').html( '<button class="close" data-dismiss="alert">x</button>' + "Cool... task was made =)");
+                        }
+                        else
+                        {
+                          $("#msg-error").removeAttr('style').html( '<button class="close" data-dismiss="alert">x</button>' + "Upss, something is wrong =(" );
+                        }
+                    }
+                });
+          }
         );
 	} );
