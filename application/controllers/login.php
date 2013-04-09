@@ -1,6 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
- * Created by JetBrains PhpStorm.
  * To change this template use File | Settings | File Templates.
  */
 class Login extends MY_Controller {
@@ -9,7 +8,7 @@ class Login extends MY_Controller {
 	{
 		parent::__construct();
 		//debug
-		$this->output->enable_profiler(TRUE);
+		// $this->output->enable_profiler(TRUE);
 
 		//load model
 		$this->load->model('login_model');
