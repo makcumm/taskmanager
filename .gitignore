@@ -1,3 +1,5 @@
 .settings/
 .buidpath
 .project
+.idea/*
+phpStorm-CC-Helpers-master/*

@@ -7,7 +7,8 @@
 	<div class="row">
 		<div class="span12">
 			<h2>Задачи</h2>
-			<div id="msg" style="display: none;" class="alert alert-success"></div>
+			<div id="msg-success" style="display: none;" class="alert alert-success"></div>
+			<div id="msg-error" style="display: none;" class="alert alert-error"></div>
 			<div id="task">
 				<table class="table">
 					<thead> <!-- otput table header -->
@@ -83,7 +84,7 @@
 							<ul>
 								<li id="task_edit" task_id="<?php echo $task_value['task_id']; ?>" class="icon-pencil" title="Изменить" style="cursor: pointer;" onclick="task_edit(<?php echo $task_value['task_id']; ?>);"></li>
 								<li task_id="<?php echo $task_value['task_id']; ?>" class="icon-ok" title="Выполнено" style="cursor: pointer;" onclick="task_made(<?php echo $task_value['task_id']; ?>);"></li>
-								<li task_id="<?php echo $task_value['task_id']; ?>" class="icon-remove" title="Удалить" style="cursor: pointer;" onclick="task_remove(<?php echo $task_value['task_id']; ?>);"></li>
+								<li task_id="<?php echo $task_value['task_id']; ?>" class="icon-remove" title="Удалить" style="cursor: pointer;"></li>
 							</ul>
 						</td>
 					</tr>

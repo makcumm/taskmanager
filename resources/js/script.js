@@ -1,70 +1,3 @@
-function task_edit( task_id )
-{
-	$(document).ready( function() {
-		$( "#dialog:ui-dialog" ).dialog( "destroy" );
-		var task_description = $( "#task_description" ),
-			task_name = $( "#task_name" ),
-			task_deadline = $( "#task_deadline" )
-		allFields = $( [] ).add( task_description ).add( task_name).add( task_deadline );
-
-		$( "#dialog-form2" ).dialog({
-			autoOpen: true,
-			height: 600,
-			width: 450,
-			modal: true,
-			close: function() {
-				allFields.val( "" ).removeClass( "ui-state-error" );
-			}
-		});
-
-		/*$.attr( "#task_id" ).click(function() {
-				$( "#dialog-form2").removeAttr( "style" );
-				$( "#dialog-form2" ).dialog( "open" );
-			});*/
-
-		$( "#submit_edit").click( function () {
-			var task_data = {
-				t_id: task_id,
-				structure: $( "#structure_edit").val(),
-				division: $( "#division_edit").val(),
-				importance: $( "#importance_edit").val(),
-				worker: $( "#worker_edit").val(),
-				task_name: $( "#task_edit_name").val(),
-				task_description: $( "#task_edit_description").val(),
-				task_deadline: $( "#task_edit_deadline").val(),
-				ajax: '1'
-			};
-
-			$.ajax( {
-				url: "main/task_edit",
-				type: 'POST',
-				data: task_data,
-				dataType: "json",
-				success: function( response ) {
-					if ( response.status == "ok" )
-					{
-//						$("#msg").removeAttr('style').html( '<button class="close" data-dismiss="alert">x</button>' + response.message );
-						$( "#dialog-form2").dialog( "close" );
-						window.location.href="main";
-					}
-					else
-					{
-						$( response.structure ).insertAfter( "#structure_edit" );
-						$( response.division ).insertAfter( "#division_edit" );
-						$( response.importance ).insertAfter( "#importance_edit" );
-						$( response.worker ).insertAfter( "#worker_edit" );
-						$( response.task_name ).insertAfter( "#task_name_edit" );
-						$( response.task_description ).insertAfter( "#task_description_edit" );
-						$( response.task_deadline ).insertAfter( "#task_deadline_edit" );
-					}
-				}
-			} );
-
-			return false;
-		} );
-	} );
-}
-
 function task_made( task_id )
 {
 	$.ajax( {
@@ -89,3 +22,98 @@ function task_remove( task_id ) {
 		}
 	} );
 }
+
+$(document).ready( function() {
+		var task_description = $( "#task_description" ),
+			task_name = $( "#task_name" ),
+			task_deadline = $( "#task_deadline" )
+		allFields = $( [] ).add( task_description ).add( task_name).add( task_deadline );
+
+        /*Open modal window*/
+		$("#create-user").click(function() {
+			$.ajax({
+				url: '/modal/open_modal_window',
+				type: 'POST',
+				data: {type: 'add_task'},
+				dataType: 'html',
+				success: function(response) {
+					$('<div class="modal hide fade">' + response + '</div>').modal({
+							backdrop: true,
+							keyboard: true
+						}).css({'width':'600'});
+					}
+			});
+		});
+
+        /*AJAX request for add task*/
+		$(document).on( "click", "#add_edit_task", function () {
+            var task_data = {
+                structure: $( "#structure").val(),
+                division: $( "#division").val(),
+                importance: $( "#importance").val(),
+                worker: $( "#worker").val(),
+                task_name: $( "#task_name").val(),
+                task_description: $( "#task_description").val(),
+                task_deadline: $( "#task_deadline").val(),
+                ajax: '1'
+            };
+
+			$.ajax( {
+				url: '/task_action/add_task',
+				type: 'POST',
+				data: task_data,
+				dataType: "json",
+				success: function( response ) {
+					if ( response.status == "ok" )
+					{
+						$("#msg-success").removeAttr('style').html( '<button class="close" data-dismiss="alert">x</button>' + response.message );
+                        $( "div.modal").modal("hide").remove();
+					}
+					else if (response.status == "error")
+					{
+						$( response.structure ).insertAfter( "#structure" );
+						$( response.division ).insertAfter( "#division" );
+						$( response.importance ).insertAfter( "#importance" );
+						$( response.worker ).insertAfter( "#worker" );
+						$( response.task_name ).insertAfter( "#task_name" );
+						$( response.task_description ).insertAfter( "#task_description" );
+						$( response.task_deadline ).insertAfter( "#task_deadline" );
+					}
+				}
+			} );
+
+			return false;
+		} );
+
+        $("tbody.list").on(
+            "click",
+            "[class*=icon-remove]",
+            function()
+            {
+                $row_object = $( this );
+                $ajax_data =
+                    {
+                        ajax: 1,
+                        task_id: $( this ).attr( "task_id" )
+                    };
+                $.ajax({
+                    url: 'task_action/task_remove',
+                    type: "POST",
+                    data: $ajax_data,
+                    dataType: "json",
+                    success: function( response )
+                    {
+                        if ( response.status == "ok" )
+                        {
+                            $row_object.parents("tr").fadeIn( 3000 ).remove();
+                            $("#msg-success").removeAttr('style').html( '<button class="close" data-dismiss="alert">x</button>' + "Task deleted successfully");
+                        }
+                        else
+                        {
+                            $("#msg-error").removeAttr('style').html( '<button class="close" data-dismiss="alert">x</button>' + "Task wasn't delete" );
+                        }
+                    }
+                });
+            }
+        );
+	} );
