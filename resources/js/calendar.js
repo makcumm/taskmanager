@@ -5,3 +5,14 @@
  * Time: 3:27 PM
  * To change this template use File | Settings | File Templates.
  */
+$( document ).ready(function() {
+    $( "#calendar" ).fullCalendar({
+        firstDay: 1,
+        header: {
+            right: 'today prev,next',
+        },
+        dayClick: function() {
+            alert("Add new task");
+        }
+    })
+});
