@@ -9,8 +9,12 @@ $( document ).ready(function() {
     $( "#calendar" ).fullCalendar({
         firstDay: 1,
         header: {
-            right: 'today prev,next',
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,agendaWeek,agendaDay'
         },
+        weekNumbers: 'true',
+        timeFormat: 'H:(mm)',
         dayClick: function() {
             alert("Add new task");
         }
