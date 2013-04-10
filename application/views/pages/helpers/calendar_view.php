@@ -3,8 +3,8 @@
  * To change this template use File | Settings | File Templates.
  */
 ?>
-<div class="container">
-  <div class="section">
+<div id="calendar-container" class="container">
+  <div class="row">
     <div class="span8">
       <div id="calendar"></div>
     </div>
