@@ -19,7 +19,19 @@ class Task_action_model extends CI_Model {
 			'task_deadline'             => $this->input->post( 'task_deadline' ),
 			'task_start_date'           => date( 'Y-m-d' )
 		);
-		$this->db->insert( 'task', $data );
+
+		//check if isset node id to be editedw
+		$id = $this->input->post( 'task_id' );
+
+		if (empty($id))
+		{
+			$this->db->insert( 'task', $data );
+		}
+		else
+		{
+			$this->db->where( 'task_id', $id );
+			$this->db->update( 'task', $data );
+		}
 	}
 
 	public function task_remove()
@@ -36,9 +48,11 @@ class Task_action_model extends CI_Model {
 		}
 	}
 
-	public function task_made( $id, $status )
+	public function task_made()
 	{
-		$query = $this->db->where( 'task_id', $id )->update( 'task', array( 'task_made' => $status ) );
+		$task_id = $this->input->post( 'task_id' );
+
+		$query = $this->db->where( 'task_id', $task_id )->update( 'task', array( 'task_made' => 'yes' ) );
 		if ( $query )
 		{
 			return TRUE;
@@ -49,26 +63,7 @@ class Task_action_model extends CI_Model {
 		}
 	}
 
-	public function task_edit()
-	{
-		$id = $this->input->post( 't_id' );
-
-		$data = array(
-			'structure_id'              => $this->input->post( 'structure' ),
-			'division_id'               => $this->input->post( 'division' ),
-			'task_importance'           => $this->input->post( 'importance' ),
-			'task_responsible_worker'   => $this->input->post( 'worker' ),
-			'task_name'                 => $this->input->post( 'task_name' ),
-			'task_description'          => $this->input->post( 'task_description' ),
-			'task_deadline'             => $this->input->post( 'task_deadline' ),
-			'task_start_date'           => date( 'Y-m-d' )
-		);
-
-		$this->db->where( 'task_id', $id );
-		$this->db->update( 'task', $data );
-	}
-
-	public function task_add_validate()
+	public function task_validate( $type )
 	{
 		$validation_rules = array(
 			array(
@@ -114,12 +109,22 @@ class Task_action_model extends CI_Model {
 
 		if ( $this->form_validation->run() == TRUE )
 		{
-			$this->add_task();
+				$this->add_task();
 
-			$message = array(
-				'status' => "ok",
-				'message' => "Congratulation! New task added."
-			);
+			if ($type == 'add')
+			{
+				$message = array(
+					'status' => "ok",
+					'message' => "Congratulation! New task added."
+				);
+			}
+			else
+			{
+				$message = array(
+					'status' => "ok",
+					'message' => "Congratulation! Task edited."
+				);
+			}
 		}
 		else
 		{

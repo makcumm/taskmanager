@@ -1,6 +1,14 @@
 <?php
 	$labels_attr = array('class' => 'control-label', );
 	$form_open_attrs = array('class' => 'form-inline modal-form', );
+	$structure_id = !empty($structure_id) ? $structure_id : '1';
+	$division_id = !empty($division_id) ? $division_id : '1';
+	$worker_id = !empty($worker_id) ? $worker_id : '1';
+	$task_importance = !empty($task_importance) ? $task_importance : '1';
+	$task_name = !empty($task_name) ? $task_name : '';
+	$task_description = !empty($task_description) ? $task_description : '';
+	$task_deadline = !empty($task_deadline) ? $task_deadline : date( 'Y-m-d' );
+	$task_id = !empty($task_id) ? $task_id : NULL;
 	echo form_open($form_action, $form_open_attrs);
 ?>
 <div class="modal-header">
@@ -8,28 +16,28 @@
 	<h3><?php echo $modal_title; ?></h3>
 </div>
 
-<div class="modal-body">
+<div class="modal-body" type="<?php echo $type; ?>" task_id="<?php echo $task_id; ?>">
 	<section>
 		<div class="row">
 			<div class="span3">
 				<div class="control-group">
 					<?php echo form_label('Structure', 'structure', $labels_attr); ?>
 					<div class="controls">
-						<?php echo form_dropdown( 'structure', prep_key_value('structure_id', 'structure_name', $structure), '1', 'id=structure' );?>
+						<?php echo form_dropdown( 'structure', prep_key_value('structure_id', 'structure_name', $structure), $structure_id, 'id=structure' );?>
 					</div>
 				</div>
 
 				<div class="control-group">
 					<?php echo form_label('Division', 'division', $labels_attr); ?>
 					<div class="controls">
-						<?php echo form_dropdown( 'division', prep_key_value('division_id', 'division_name', $division), '1', 'id=division' );?>
+						<?php echo form_dropdown( 'division', prep_key_value('division_id', 'division_name', $division), $division_id, 'id=division' );?>
 					</div>
 				</div>
 
 				<div class="control-group">
 					<?php echo form_label('Responsible', 'worker', $labels_attr); ?>
 					<div class="controls">
-						<?php echo form_dropdown( 'worker', prep_key_value('worker_id', 'worker_name', $worker), '1', 'id=worker' ); ?>
+						<?php echo form_dropdown( 'worker', prep_key_value('worker_id', 'worker_name', $worker), $worker_id, 'id=worker' ); ?>
 					</div>
 				</div>
 
@@ -39,7 +47,7 @@
 					<?php echo form_label('Priority', 'importance', $labels_attr); ?>
 					<div class="controls">
 						<?php $importance_arr = array('high' => 'high', 'normal' => 'normal', 'low' => 'low'); ?>
-						<?php echo form_dropdown( 'importance', $importance_arr, '1', 'id=importance' ); ?>
+						<?php echo form_dropdown( 'importance', $importance_arr, $task_importance, 'id=importance' ); ?>
 					</div>
 				</div>
 
@@ -50,7 +58,8 @@
 							$form_input_conf = array(
 								'name' => 'task_name',
 								'placeholder' => 'Task name',
-								'id' => 'task_name'
+								'id' => 'task_name',
+								'value' => $task_name
 							);
 							echo form_input($form_input_conf);
 						?>
@@ -65,7 +74,8 @@
 								'name' => 'task_description',
 								'cols' => '5',
 								'rows' => '5',
-								'id' => 'task_description'
+								'id' => 'task_description',
+								'value' => $task_description
 							);
 							echo form_textarea( $for_textarea );
 						?>
@@ -75,7 +85,7 @@
 				<div class="control-group">
 					<?php echo form_label('End date', 'task_deadline', $labels_attr); ?>
 					<div class="controls">
-						<?php echo form_input('task_deadline', "2012-06-15", 'id=task_deadline' ); ?>
+						<?php echo form_input('task_deadline',$task_deadline, 'id=task_deadline') ?>
 					</div>
 				</div>
 

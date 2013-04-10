@@ -1,28 +1,3 @@
-function task_made( task_id )
-{
-	$.ajax( {
-		url: "main/task_made",
-		type: 'POST',
-		data:  { 'task_id':  task_id, 'status': "yes",  'ajax': 1},
-		dataType: "json",
-		success: function(response) {
-			$('td[task_name*="'+task_id+'"]').parent().addClass("task_made");
-		}
-	} );
-}
-
-function task_remove( task_id ) {
-	$.ajax( {
-		url: "main/task_remove",
-		type: 'POST',
-		data:  { 'task_id':  task_id,  'ajax': 1},
-		dataType: "json",
-		success: function(response) {
-			$('li[task_id*="'+task_id+'"]').parents('tr').remove();
-		}
-	} );
-}
-
 $(document).ready( function() {
 		var task_description = $( "#task_description" ),
 			task_name = $( "#task_name" ),
@@ -55,19 +30,24 @@ $(document).ready( function() {
                 task_name: $( "#task_name").val(),
                 task_description: $( "#task_description").val(),
                 task_deadline: $( "#task_deadline").val(),
-                ajax: '1'
+                type: $(".modal-body").attr( "type" ),
+                task_id: $(".modal-body").attr( "task_id" ),
+                ajax: '1',
             };
 
-			$.ajax( {
-				url: '/task_action/add_task',
+      $.ajax( {
+        url: '/task_action/add_task',
 				type: 'POST',
 				data: task_data,
 				dataType: "json",
 				success: function( response ) {
 					if ( response.status == "ok" )
 					{
-						$("#msg-success").removeAttr('style').html( '<button class="close" data-dismiss="alert">x</button>' + response.message );
-                        $( "div.modal").modal("hide").remove();
+                        // location.reload(true);
+                        // setTimeout("$( "div.modal").modal("hide").remove())", 35);
+            $("#msg-success").removeAttr('style').html( '<button class="close" data-dismiss="alert">x</button>' + response.message );
+            $( "div.modal").modal("hide").remove();
+            $("tbody.list").append(response.new_task_data);
 					}
 					else if (response.status == "error")
 					{
@@ -115,5 +95,69 @@ $(document).ready( function() {
                     }
                 });
             }
+        );
+
+        // Made buttom
+        $("tbody.list").on(
+          "click",
+          "[class*=icon-ok]",
+          function()
+          {
+            $row_object = $( this );
+            $ajax_data =
+              {
+                ajax: 1,
+                task_id: $( this ).attr( "task_id" )
+              };
+
+              // get parent <tr> for click icon
+              var parent = $(this).parent().parent().parent();
+
+              $.ajax({
+                    url: 'task_action/task_made',
+                    type: "POST",
+                    data: $ajax_data,
+                    dataType: "json",
+                    success: function( response )
+                    {
+                        if ( response.status == "ok" )
+                        {
+                          parent.addClass('task_made');
+                          $("#msg-success").removeAttr('style').html( '<button class="close" data-dismiss="alert">x</button>' + "Cool... task was made =)");
+                        }
+                        else
+                        {
+                          $("#msg-error").removeAttr('style').html( '<button class="close" data-dismiss="alert">x</button>' + "Upss, something is wrong =(" );
+                        }
+                    }
+                });
+          }
+        );
+
+        // Edit buttom
+        $("tbody.list").on(
+          "click",
+          "[id*=task_edit]",
+          function()
+          {
+            var $row_object = $( this );
+            var task_id = $( this ).attr( "task_id" );
+
+              $.ajax({
+                    url: 'modal/open_modal_window',
+                    type: 'POST',
+                    data: {type: 'edit_task', id: task_id},
+                    dataType: 'html',
+                    success: function( response )
+                    {
+                        $('<div class="modal hide fade">' + response + '</div>').modal({
+                            backdrop: true,
+                            keyboard: true
+                          }).css({'width':'600'});
+                    }
+                });
+
+
+          }
         );
 	} );
