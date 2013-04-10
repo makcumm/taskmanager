@@ -5,4 +5,11 @@ class Modal_model extends CI_Model {
 	{
 		parent::__construct();
 	}
+
+  public function get_task_data_by_id( $type )
+  {
+    $task_id  = $this->input->post( 'id' );
+    $query = $this->db->get_where('task', array('task_id' => $task_id))->row_array();
+    return $query[$type];
+  }
 }

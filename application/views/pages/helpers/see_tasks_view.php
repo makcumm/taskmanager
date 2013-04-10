@@ -82,7 +82,7 @@
 
 						<td style="width: 80px;">
 							<ul>
-								<li id="task_edit" task_id="<?php echo $task_value['task_id']; ?>" class="icon-pencil" title="Изменить" style="cursor: pointer;" onclick="task_edit(<?php echo $task_value['task_id']; ?>);"></li>
+								<li id="task_edit" task_id="<?php echo $task_value['task_id']; ?>" class="icon-pencil" title="Изменить" style="cursor: pointer;"></li>
 								<li task_id="<?php echo $task_value['task_id']; ?>" class="icon-ok" title="Выполнено" style="cursor: pointer;"></li>
 								<li task_id="<?php echo $task_value['task_id']; ?>" class="icon-remove" title="Удалить" style="cursor: pointer;"></li>
 							</ul>
