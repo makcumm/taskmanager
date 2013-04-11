@@ -23,6 +23,8 @@ class Main extends MY_Controller {
 			$this->data['error'] = "You haven't access permissions." . anchor('login/', 'Log in please!');
 
 			$this->_render( 'pages/helpers/strickt_access' );
+
+      redirect('login');
 		}
 		else
 		{
