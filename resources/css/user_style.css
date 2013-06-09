@@ -4,7 +4,7 @@
 	color: #FFF;
 }
 
-.task_made {
+tr.task_made {
 	text-decoration: line-through;
 }
 
@@ -12,7 +12,7 @@
 	font-family: Arial; font-size: 12px;
 }
 table.calendar {
-	border-collapse: collapse; margin: 30px 0;
+	border-collapse: collapse; margin: 50px 0;
 }
 .calendar .days td {
 	width: 80px; height: 80px; padding: 4px;
@@ -25,4 +25,23 @@ table.calendar {
 }
 .calendar .highlight {
 	font-weight: bold; color: #00F;
+}
+
+.pull-right {
+	margin-top: -40px;
+}
+.page-header h1 {
+	padding-top: 30px;
+	width: 60%;
+}
+h1 {
+	font-size: 28px;
+}
+h2 {
+	font-size: 24px;
+}
+
+.modal-submit {
+	margin: 0 !important;
+	float: none !important;
 }

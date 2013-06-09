@@ -1,9 +1,5 @@
 <?php
 /**
- * Created by JetBrains PhpStorm.
- * User: Максим
- * Date: 03.06.12
- * Time: 10:03
  * To change this template use File | Settings | File Templates.
  */
 ?>
@@ -11,7 +7,8 @@
 	<div class="row">
 		<div class="span12">
 			<h2>Задачи</h2>
-			<div id="msg" style="display: none;" class="alert alert-success"></div>
+			<div id="msg-success" style="display: none;" class="alert alert-success"></div>
+			<div id="msg-error" style="display: none;" class="alert alert-error"></div>
 			<div id="task">
 				<table class="table">
 					<thead> <!-- otput table header -->
@@ -48,7 +45,13 @@
 
 						}
 						?>
-					<tr>
+
+						<?php if ( $task_value['task_made'] == "yes" ) : ?>
+							<tr class="task_made">
+						<?php else : ?>
+							<tr>
+						<?php endif; ?>
+
 						<td class="structure" style="width: 70px;">
 							<?=$task_value['structure_name']?>
 						</td>
@@ -65,15 +68,9 @@
 							<?=$task_value['worker_name'] . " " . $task_value['worker_sure_name']?>
 						</td>
 
-						<?php if ( $task_value['task_made'] == "yes" ) : ?>
-							<td class="task_made" task_name="<?php echo $task_value['task_id']; ?>" style="width: 150px;">
-									<?=$task_value['task_name']?>
-							</td>
-						<?php else : ?>
 							<td class="task_name" task_name="<?php echo $task_value['task_id']; ?>" style="width: 150px;">
 								<?=$task_value['task_name']?>
 							</td>
-						<?php endif; ?>
 
 						<td class="task_description" style="width: 200px;" task_description="<?php echo $task_value['task_id']; ?>">
 							<?=$task_value['task_description']?>
@@ -85,9 +82,9 @@
 
 						<td style="width: 80px;">
 							<ul>
-								<li id="task_edit" task_id="<?php echo $task_value['task_id']; ?>" class="icon-pencil" title="Изменить" style="cursor: pointer;" onclick="task_edit(<?php echo $task_value['task_id']; ?>);"></li>
-								<li task_id="<?php echo $task_value['task_id']; ?>" class="icon-ok" title="Выполнено" style="cursor: pointer;" onclick="task_made(<?php echo $task_value['task_id']; ?>);"></li>
-								<li task_id="<?php echo $task_value['task_id']; ?>" class="icon-remove" title="Удалить" style="cursor: pointer;" onclick="task_remove(<?php echo $task_value['task_id']; ?>);"></li>
+								<li id="task_edit" task_id="<?php echo $task_value['task_id']; ?>" class="icon-pencil" title="Изменить" style="cursor: pointer;"></li>
+								<li task_id="<?php echo $task_value['task_id']; ?>" class="icon-ok" title="Выполнено" style="cursor: pointer;"></li>
+								<li task_id="<?php echo $task_value['task_id']; ?>" class="icon-remove" title="Удалить" style="cursor: pointer;"></li>
 							</ul>
 						</td>
 					</tr>

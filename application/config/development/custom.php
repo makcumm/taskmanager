@@ -2,7 +2,7 @@
 
 $config['site_title'] = 'Taskmanager';
 $config['site_description'] = 'Taskmanager for group of firms';
-$config['site_author'] = 'Melnic Maxim';
+$config['site_author'] = 'Alexei Goja';
 $config['site_keywords'] = 'key1, key2';
 
 

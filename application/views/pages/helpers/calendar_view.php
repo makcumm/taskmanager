@@ -1,9 +1,5 @@
 <?php
 /**
- * Created by JetBrains PhpStorm.
- * User: Максим
- * Date: 17.06.12
- * Time: 18:05
  * To change this template use File | Settings | File Templates.
  */
 ?>
