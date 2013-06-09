@@ -45,3 +45,7 @@ h2 {
 	margin: 0 !important;
 	float: none !important;
 }
+
+#calendar-container {
+    margin: 50px auto 0;
+}
